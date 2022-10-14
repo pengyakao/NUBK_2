@@ -1,10 +1,25 @@
-<script setup>
-const props = defineProps(["color1", "color2", "img"]);
+<script>
+export default {
+  setup() {
+    return {};
+  },
+  components: {},
+  props: ["color1", "color2", "icon"],
+};
+
+// const props = defineProps(["color1", "color2", "img"]);
+// 下面就不用 porps.img
 </script>
 
 <template>
-  <div id="menubox" :style="`background:linear-gradient(135deg, ${color1} 0%, ${color2} 100%)`">
-    <img :src="props.img" alt="icon"/>
+  <div
+    id="menubox"
+    :style="`background:linear-gradient(135deg, ${color1} 0%, ${color2} 100%)`"
+  >
+    <div class="menu-img">
+      <i :class=icon></i>
+    </div>
+    
   </div>
 </template>
 
@@ -12,17 +27,21 @@ const props = defineProps(["color1", "color2", "img"]);
 #menubox {
   width: 60px;
   height: 60px;
-  left: 0px;
-  top: 0px;
   border-radius: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin: 12px 18px;
 }
 
-#menubox img {
-  width: 30px;
-  height: 30px;
+.menu-img {
+  display: inline-block;
+  margin: 0 auto 0.375rem;
+  width: 3.75rem;
+  height: 3.75rem;
+  color: white;
+  font-size: 1.875rem;
+  line-height: 3.75rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
