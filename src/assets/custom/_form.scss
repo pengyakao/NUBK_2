@@ -1,0 +1,5 @@
+.form-select, .btn {
+    &:focus {
+        box-shadow: none;
+    }
+}

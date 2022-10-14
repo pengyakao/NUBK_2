@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="about">
+  <div class="search">
     Search
   </div>
 </template>
