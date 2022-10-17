@@ -2,6 +2,8 @@
 import MenuBox from "./components/MenuBox.vue";
 import Slider from "./components/Slider.vue";
 import { useI18n } from "vue-i18n";
+
+
 export default {
   setup() {
     const { t, locale } = useI18n();
@@ -42,6 +44,7 @@ export default {
     class="c-main c-main-2"
     style="padding-top: 53px; padding-bottom: 0px"
   >
+  
     <div class="index-block minHeight-outer">
       <Slider />
       <div class="menu-outer">

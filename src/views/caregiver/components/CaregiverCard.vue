@@ -2,27 +2,32 @@
 import { toRefs } from 'vue'
 export default {
     props: {
-        title: String,
+        name: String,
         gender: String,
         age: Number,
         height: Number,
         weight: Number,
-        tenure: Number,
+        seniority: String,
         license: Array,
-        text: String,
-        average: String,
+        experience: String,
+        star: String,
+        comments: Number,
         favorite: Boolean,
         img: String,
         link: String
     },
     setup(props) {
-        const { title , gender , age , height , weight , tenure , license , text , average , favorite , img , link} = toRefs(props)
+        const { name , gender , age , height , weight , seniority , license , experience , star , comments , favorite , img , link} = toRefs(props)
         const genderIcon = (gender.value == 'F') ? 'fa fa-venus' : 'fa fa-mars'
         const licenseInfo = license.value.join('、')
-        const textInfo = text.value.join('、')
+        const experienceInfo = [];
+        experience.value.forEach(function(item, index){
+            console.log(item.name);
+            experienceInfo.push(item.name);
+        });
         const favoriteInfo = favorite.value ? 'color: #ff345f;' : ''
         return {
-            title , gender , age , height , weight , tenure , license , text , average , favorite , img , link , genderIcon, licenseInfo ,textInfo , favoriteInfo
+            name , gender , age , height , weight , seniority , license , experience , star , comments , favorite , img , link , genderIcon, licenseInfo ,experienceInfo , favoriteInfo
         }
     }
 };
@@ -38,13 +43,13 @@ export default {
                 </div>
                 <div class="card-body">
                     <a href="caregiver-detail.html" class="card-link">
-                        <div class="card-title">{{title}}<font-awesome-icon :icon=genderIcon /></div>
-                        <div class="card-info">{{age}}歲/{{height}}cm/{{weight}}kg　年資{{tenure}}</div>
+                        <div class="card-title">{{name}}<font-awesome-icon :icon=genderIcon /></div>
+                        <div class="card-info">{{age}}歲/{{height}}cm/{{weight}}kg　年資{{seniority}}</div>
                         <div class="card-license">{{licenseInfo}}</div>
-                        <div class="card-text">照顧經驗：{{textInfo}}</div>
+                        <div class="card-text">照顧經驗：{{experienceInfo.join('、')}}</div>
                     </a>
                     <div class="card-rating">
-                        <span class="average">{{average}}</span><span class="star"><i class="fas fa-star active"></i><i class="fa fa-star active"></i><i class="fas fa-star active"></i><i class="fas fa-star active"></i><i class="fas fa-star"></i></span><span class="total">(25)</span>
+                        <span class="average">{{star}}</span><span class="star"><i class="fas fa-star active"></i><i class="fa fa-star active"></i><i class="fas fa-star active"></i><i class="fas fa-star active"></i><i class="fas fa-star"></i></span><span class="total">({{comments}})</span>
                     </div>
                     <a href="javascript:void(0);" class="btn btn-favorite" :style=favoriteInfo><i class="far fa-heart"></i></a>
                 </div>

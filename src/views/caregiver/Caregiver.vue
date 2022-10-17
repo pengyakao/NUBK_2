@@ -1,13 +1,22 @@
 <script>
+import { ref } from 'vue'
 import { faL } from "@fortawesome/free-solid-svg-icons";
 import CaregiverCard from "./components/CaregiverCard.vue";
 import { useI18n } from "vue-i18n";
-
+import axios from "axios";
 
 export default {
   setup() {
     const { t, locale } = useI18n();
-    return { t,locale, };
+
+    const caretakersData = ref([])
+
+    //getData
+    axios.get("/employer/caretakers").then((res) => {
+    caretakersData.value = res.data.data.data
+  })
+
+    return { t,locale,caretakersData};
   },
   components: {
     CaregiverCard,
@@ -57,22 +66,26 @@ export default {
         </div>
       </div>
       <div class="caregiver-outer">
-        <CaregiverCard
-          title="張小姐"
+        <div>
+          <CaregiverCard
+          :name="caretakersData[0].name"
           gender="F"
-          age="58"
-          height="163"
-          weight="60"
-          tenure="1~3年"
-          :license="['護理相關證照', '良民證']"
-          :text="['失智症(80小時)', '腦中風(24小時)', '食道癌(48小時)']"
-          average="4.0"
+          :age="caretakersData[0].age"
+          :height="caretakersData[0].height"
+          :weight="caretakersData[0].weight"
+          :seniority="caretakersData[0].seniority.name"
+          :license="['護理相關證照', '照服員證照']"
+          :experience="caretakersData[0].experience"
+          :star="caretakersData[0].star"
+          :comments="caretakersData[0].comments"
           :favorite= true
           img="caregiver_01.jpg"
           link="#"
         />
-        <CaregiverCard
-          title="廖小姐"
+        </div>
+        
+        <!-- <CaregiverCard
+          name="廖小姐"
           gender="F"
           age="35"
           height="162"
@@ -86,7 +99,7 @@ export default {
           link="#"
         />
         <CaregiverCard
-          title="看先生"
+          name="看先生"
           gender="M"
           age="35"
           height="172"
@@ -100,7 +113,7 @@ export default {
           link="#"
         />
         <CaregiverCard
-          title="劉先生"
+          name="劉先生"
           gender="M"
           age="60"
           height="175"
@@ -114,7 +127,7 @@ export default {
           link="#"
         />
         <CaregiverCard
-          title="張小姐"
+          name="張小姐"
           gender="F"
           age="58"
           height="163"
@@ -128,7 +141,7 @@ export default {
           link="#"
         />
         <CaregiverCard
-          title="廖小姐"
+          name="廖小姐"
           gender="F"
           age="35"
           height="162"
@@ -140,7 +153,7 @@ export default {
           :favorite="false"
           img="caregiver_02.jpg"
           link="#"
-        />
+        /> -->
       </div>
     </section>
   </div>
