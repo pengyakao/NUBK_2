@@ -1,10 +1,13 @@
 <script>
 import { faL } from "@fortawesome/free-solid-svg-icons";
 import CaregiverCard from "./components/CaregiverCard.vue";
+import { useI18n } from "vue-i18n";
+
 
 export default {
   setup() {
-    return {};
+    const { t, locale } = useI18n();
+    return { t,locale, };
   },
   components: {
     CaregiverCard,
@@ -29,21 +32,27 @@ export default {
             <a href="javascript:void(0);" class="nav-link"></a>
           </li>
         </ul>
+        <nav>
+        <select v-model="locale">
+          <option>en-US</option>
+          <option>zh-TW</option>
+        </select>
+      </nav>
       </nav>
     </header>
     <section class="c-main" style="padding-top: 48px; padding-bottom: 0px">
       <div class="ui-tab">
         <div class="row">
           <div class="col">
-            <a href="javascript:void(0);"><i class="fa fa-search"></i>搜尋</a>
+            <a href="javascript:void(0);"><i class="fa fa-search"></i>{{ t("search") }}</a>
           </div>
           <div class="col">
             <a href="javascript:void(0);"
-              ><i class="fa fa-sort-amount-down"></i>排序</a
+              ><i class="fa fa-sort-amount-down"></i>{{ t("sort") }}</a
             >
           </div>
           <div class="col">
-            <a href="javascript:void(0);"><i class="fa fa-filter"></i>篩選</a>
+            <a href="javascript:void(0);"><i class="fa fa-filter"></i>{{ t("filter") }}</a>
           </div>
         </div>
       </div>

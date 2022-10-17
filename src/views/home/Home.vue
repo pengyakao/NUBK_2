@@ -1,9 +1,11 @@
 <script>
 import MenuBox from "./components/MenuBox.vue";
 import Slider from "./components/Slider.vue";
+import { useI18n } from "vue-i18n";
 export default {
   setup() {
-    return {};
+    const { t, locale } = useI18n();
+    return { t,locale, };
   },
   components: {
     MenuBox,
@@ -27,30 +29,39 @@ export default {
           <a href="javascript:void(0);" class="nav-link"></a>
         </li>
       </ul>
+      <nav>
+        <select v-model="locale">
+          <option>en-US</option>
+          <option>zh-TW</option>
+        </select>
+      </nav>
     </nav>
   </header>
   <!-- content -->
-  <section class="c-main c-main-2" style="padding-top:53px;padding-bottom: 0px">
+  <section
+    class="c-main c-main-2"
+    style="padding-top: 53px; padding-bottom: 0px"
+  >
     <div class="index-block minHeight-outer">
       <Slider />
       <div class="menu-outer">
         <div class="row">
           <div class="col">
             <a href="#" class="menu-link">
-              <div class="menu-subtitle">填寫</div>
-              <div class="menu-title">會員資料</div>
+              <div class="menu-subtitle">{{ t("fillIn") }}</div>
+              <div class="menu-title">{{ t("memberProfile") }}</div>
             </a>
           </div>
           <div class="col">
             <a href="#" class="menu-link">
-              <div class="menu-subtitle">新增</div>
-              <div class="menu-title">被照顧者</div>
+              <div class="menu-subtitle">{{ t("add") }}</div>
+              <div class="menu-title">{{ t("patient") }}</div>
             </a>
           </div>
           <div class="col">
             <a href="#" class="menu-link">
-              <div class="menu-subtitle">新增</div>
-              <div class="menu-title">服務需求</div>
+              <div class="menu-subtitle">{{ t("add") }}</div>
+              <div class="menu-title">{{ t("serviceRequirement") }}</div>
             </a>
           </div>
         </div>
@@ -166,5 +177,4 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../assets/layout.scss";
-
 </style>

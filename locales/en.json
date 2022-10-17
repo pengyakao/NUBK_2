@@ -1,0 +1,21 @@
+{
+    "fillIn": "Fill In",
+    "memberProfile": "Member Profile",
+    "add": "Add",
+    "patient": "Patient",
+    "serviceRequirement": "Service Requirement",
+    "search": "Search",
+    "sort": "Sort",
+    "filter": "Filter",
+    "footer":
+        {
+            "search":"Search",
+            "calendar": "calendar",
+            "help": "help",
+            "member": "member"
+
+        }
+    
+
+
+}

@@ -1,0 +1,24 @@
+{
+    "fillIn": "填寫",
+    "memberProfile": "會員資料",
+    "add": "新增",
+    "patient": "被照顧者",
+    "serviceRequirement": "服務需求",
+    "search": "搜尋",
+    "sort": "排序",
+    "filter": "篩選",
+    "footer":
+    {
+        "search":"搜尋資料",
+        "calendar": "日曆排程",
+        "help": "使用教學",
+        "member": "會員專區"
+    }
+
+
+
+
+
+
+
+  }
